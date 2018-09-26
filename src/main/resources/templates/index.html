@@ -1,10 +1,51 @@
 {{>layout/header}}
 <body ng-app="crud">
-<div ng-controller="UserCtrl" ng-cloak>
-    
 
+<div ng-controller="DataCtrl" ng-cloak="">
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="http://icpep-se.com:8080/">Flappy Bird</a>
+        <a href="http://icpep-se.com:3000/">IOT Systems</a>
+    </div>
+    <div id="main">
+        <span style="position: absolute;font-size:30px;cursor:pointer;top: 15px;left: 40px; color: white;" onclick="openNav()">&#9776;</span>
+    </div>
+    <div class="background-heading" ng-style="backgroundColor">
+        <div class="container">
+            <div class="row">
+                <div class="division-container col-md-12">
+                    <img class="image-content" src="/image/fake-new.png">
+                    <img class="image-content-icpep" src="/image/ICPEP-E.png" ng-hide="displayLogo">
+                    <img class="image-content-icpep" src="[[imageLegit]]" ng-show="displayLogo">
+                    <form class="form-style">
+                        <div class="input-group">
+                            <input type="text" name="url" ng-model="dataForm.url" class="form-control" id="url" placeholder="Ex: news.abs-cbn.com"  autofocus="" required="" autocomplete="off">
+                        </div>
+                        <p class="alert-content" ng-style="boxObj">
+                            [[fakeRes]] [[errorText]]
+                        </p>
+                        <div class="modal-footer">
+                            <button ng-click="check()" class="btn btn-success" data-toggle="modal" >Check</button>
+                            <input class="btn btn-danger" type="reset" name="Reset">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {{>layout/scripts}}
-<script src="/js/controller/userCtrl.js"></script>
+<script>
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "230px";
+        document.getElementById("main").style.marginLeft = "230px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>
+<script src="/js/controller/dataCtrl.js"></script>
 </body>
 </html>
