@@ -14,4 +14,10 @@ public class HomeController {
         return "index";
     }
 
+//    @RequestMapping("/data")
+//    public String dataPage(Model model) {
+//        model.addAttribute("title","Data");
+//        return "data";
+//    }
+
 }

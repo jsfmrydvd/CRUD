@@ -1,20 +1,18 @@
 app.controller('DataCtrl', ['$scope', '$http', function($scope, $http) {
     //save or create
     $scope.check = function() {
+        console.log("1");
         var data = $scope.dataForm;
         $http.post("/api/data/check", data)
             .then(function(response) {
                 try {
                     console.log(response);
                     var data = response.data;
-                    console.log(response);
                     if(data.success) {
                         $scope.results = data.result;
                         var dataResult = JSON.parse($scope.results);
                         var errorResult = dataResult.error;
-                        console.log(dataResult);
                         var fakeResult = dataResult.fake;
-                        console.log(fakeResult);
                         $scope.displayLogo = true;
                         if(fakeResult === false) {
                             $scope.backgroundColor = {
@@ -26,8 +24,6 @@ app.controller('DataCtrl', ['$scope', '$http', function($scope, $http) {
                                 "background-color" : "#28a745"
                             };
                             $scope.imageLegit = "/image/ICPEP-L.png";
-
-
                         } else if(fakeResult === true) {
                             $scope.backgroundColor = {
                                 "background-color" : "rgb(100, 35, 35)"
@@ -70,5 +66,4 @@ app.controller('DataCtrl', ['$scope', '$http', function($scope, $http) {
                 console.log(error);
             });
     };
-
 }]);
